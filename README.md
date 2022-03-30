@@ -1,6 +1,6 @@
     ✨ QR Code Generator App
 ---
-![Quiz Mini App](src/assets/images/preivew.png)
+![QR Code Generator mini app](src/assets/images/preivew.png)
 #### 🧷 About
 QR application using [QRTIGER API](https://www.qrcode-tiger.com)
 )
