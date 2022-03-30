@@ -1,8 +1,9 @@
-    ✨ Quiz Mini App
+    ✨ QR Code Generator App
 ---
 ![Quiz Mini App](src/assets/images/preivew.png)
 #### 🧷 About
-Quiz application using [Trivia API](https://opentdb.com/)
+QR application using [QRTIGER API](https://www.qrcode-tiger.com)
+)
 
 ---
 #### 📊 What was used
