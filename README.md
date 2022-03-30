@@ -3,7 +3,6 @@
 ![QR Code Generator mini app](src/assets/images/preivew.png)
 #### 🧷 About
 QR application using [QRTIGER API](https://www.qrcode-tiger.com)
-)
 
 ---
 #### 📊 What was used
