@@ -1,13 +1,43 @@
+import { useDispatch } from 'react-redux';
+import { useState, createContext } from 'react';
 import { InputField, InputColor } from './index';
-import { useContext } from 'react';
-import { InputContext } from '../App';
+import { fetchData } from '../redux/qr/actions';
+
+export const InputContext = createContext();
 const InputForm = () => {
-	const { getQrCode, inputValue } = useContext(InputContext);
-	const handleSubmit = () => getQrCode();
+	const dispatch = useDispatch();
+
+	const [inputValue, setInputValue] = useState({
+		url: '',
+		color: '',
+	});
+	const config = {
+		headers: {
+			Authorization: 'Bearer cc229a60-af5a-11ec-bbba-7f0ed120ba04',
+		},
+	};
+	const bodyParameters = {
+		colorDark: inputValue.color,
+		qrCategory: 'url',
+		text: inputValue.url,
+	};
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		dispatch(fetchData(bodyParameters, config));
+	};
+
+	const value = {
+		inputValue,
+		setInputValue,
+	};
+
 	return (
 		<div className='col-span-2 p-6 grid gap-4'>
-			<InputField />
-			<InputColor />
+			<InputContext.Provider value={value}>
+				<InputField />
+				<InputColor />
+			</InputContext.Provider>
+
 			<button
 				disabled={!inputValue.url}
 				onClick={handleSubmit}
