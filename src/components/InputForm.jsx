@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { useState, createContext } from 'react';
+import { useState, createContext, useEffect } from 'react';
 import { InputField, InputColor } from './index';
-import { fetchData } from '../redux/qr/actions';
+// import { fetchData } from '../redux/qr/actions';
+import { fetchData } from '../features/qr/qrSlice';
 
 export const InputContext = createContext();
 const InputForm = () => {
@@ -11,20 +12,23 @@ const InputForm = () => {
 		url: '',
 		color: '',
 	});
-	const config = {
-		headers: {
-			Authorization: 'Bearer cc229a60-af5a-11ec-bbba-7f0ed120ba04',
-		},
-	};
-	const bodyParameters = {
-		colorDark: inputValue.color,
-		qrCategory: 'url',
-		text: inputValue.url,
-	};
+	// const bodyParameters = {
+	// 	colorDark: inputValue.color,
+	// 	qrCategory: 'url',
+	// 	text: inputValue.url,
+	// };
+
+	const color = inputValue.color;
+	const url = inputValue.url;
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(fetchData(bodyParameters, config));
+		dispatch(fetchData({ color, url }));
 	};
+
+	// console.log(imageURL, loading, error);
+	// useEffect(() => {
+	// 	dispatch(fetchData(bodyParameters, config));
+	// }, []);
 
 	const value = {
 		inputValue,

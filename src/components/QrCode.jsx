@@ -2,10 +2,10 @@ import { saveAs } from 'file-saver';
 import { useSelector } from 'react-redux';
 
 const QrCode = () => {
-	const { loading, error, imageURL } = useSelector(({ qr }) => qr);
-
+	const { loading, error, imgUrl } = useSelector(({ qr }) => qr);
+	console.log(imgUrl);
 	const downloadImage = () => {
-		saveAs(imageURL, 'qrCode.png');
+		saveAs(imgUrl.url, 'qrCode.png');
 	};
 
 	if (loading) {
@@ -25,9 +25,9 @@ const QrCode = () => {
 	}
 	return (
 		<div className='bg-gray-100 rounded-r-md flex flex-col items-center justify-center'>
-			{imageURL ? (
+			{imgUrl ? (
 				<div>
-					<img className='w-48' src={imageURL} alt='qrCode' />
+					<img className='w-48' src={imgUrl.url} alt='qrCode' />
 					<button
 						onClick={downloadImage}
 						className='bg-blue-400 text-white mt-2 px-4 py-1 w-full hover:bg-blue-500'
