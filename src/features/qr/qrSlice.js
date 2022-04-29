@@ -22,6 +22,7 @@ export const fetchData = createAsyncThunk(
 				{
 					headers: {
 						Authorization: `Bearer cc229a60-af5a-11ec-bbba-7f0ed120ba04`,
+						'Content-Type': 'application/json',
 					},
 				}
 			);
